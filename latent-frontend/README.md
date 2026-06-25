@@ -1,16 +1,47 @@
-# React + Vite
+# CampusConnect Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the React + Vite frontend for CampusConnect.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+`latent-frontend` is a React 19 application built with Vite. It connects to the CampusConnect backend API and provides the full student user experience:
 
-## React Compiler
+- authentication and onboarding screens
+- dashboard, feed, and notifications
+- campus map visualization with Leaflet
+- events, clubs, mess booking, market, lost & found, people discovery, study groups, seniors
+- protected app layout with public/guest and authenticated route guards
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run Locally
 
-## Expanding the Oxlint configuration
+```bash
+cd latent-frontend
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+By default, the app runs on `http://localhost:5173`.
+
+## Scripts
+
+- `npm run dev` — start the Vite dev server
+- `npm run build` — build production assets
+- `npm run lint` — run Oxlint on the frontend code
+- `npm run preview` — preview the production build locally
+
+## Tech Stack
+
+- React 19
+- Vite
+- React Router v7
+- Zustand for auth state management
+- TanStack Query for API caching
+- Leaflet + React Leaflet for maps
+- Axios for HTTP requests
+- Sonner for toast notifications
+
+## Notes
+
+- Ensure the backend is running and `FRONTEND_URL` is configured in `latent-backend/.env`.
+- The frontend ships its own router and user state store.
+- Keep `latent-backend` and `latent-frontend` workspaces separate when installing dependencies.
