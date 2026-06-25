@@ -1,0 +1,455 @@
+/* ============================================================
+   LATENT — index.css
+   Design System: Blueprint on Paper
+   Single source of truth for all design tokens.
+   ============================================================ */
+
+/* Fonts are imported in main.jsx to avoid PostCSS resolution issues */
+
+/* === CORE PALETTE === */
+:root {
+  /* Backgrounds — layered system */
+  --bg-app: #f1f5f9;
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-surface: #f1f5f9;
+  --bg-surface-hover: #e2e8f0;
+
+  /* Brand — the only saturated colors */
+  --brand: #2563eb;
+  --brand-dark: #1d4ed8;
+  --brand-light: #eff6ff;
+  --brand-text: #1e40af;
+  --brand-border: rgba(37, 99, 235, 0.3);
+
+  /* Accent — energy, alerts, CTAs */
+  --accent: #f59e0b;
+  --accent-dark: #d97706;
+  --accent-light: #fffbeb;
+  --accent-text: #92400e;
+
+  /* Neutrals */
+  --text-primary: #0f172a;
+  --text-body: #334155;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Borders */
+  --border: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-strong: #94a3b8;
+
+  /* Semantic */
+  --success: #10b981;
+  --success-bg: #f0fdf4;
+  --success-border: #bbf7d0;
+  --warning: #f59e0b;
+  --warning-bg: #fffbeb;
+  --danger: #ef4444;
+  --danger-bg: #fef2f2;
+  --danger-border: #fecaca;
+  --info: #3b82f6;
+  --info-bg: #eff6ff;
+
+  /* Crowd indicators (map) */
+  --crowd-low: #10b981;
+  --crowd-low-bg: rgba(16, 185, 129, 0.12);
+  --crowd-medium: #f59e0b;
+  --crowd-medium-bg: rgba(245, 158, 11, 0.12);
+  --crowd-high: #ef4444;
+  --crowd-high-bg: rgba(239, 68, 68, 0.12);
+
+  /* Shadows — precise, not generic */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-sm:
+    0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md:
+    0 4px 6px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.04);
+  --shadow-lg:
+    0 10px 15px rgba(15, 23, 42, 0.06), 0 4px 6px rgba(15, 23, 42, 0.03);
+  --shadow-xl:
+    0 20px 25px rgba(15, 23, 42, 0.07), 0 8px 10px rgba(15, 23, 42, 0.03);
+  --shadow-card:
+    0 2px 8px rgba(15, 23, 42, 0.07), 0 0 0 1px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover:
+    0 8px 24px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(15, 23, 42, 0.06);
+
+  /* Radius */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-2xl: 28px;
+  --r-full: 9999px;
+
+  /* Layout */
+  --nav-w: 60px;
+  --nav-w-open: 220px;
+  --header-h: 58px;
+  --content-max: 1100px;
+
+  /* Transitions */
+  --t-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --t-base: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --t-slow: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  --t-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* === BASE RESET === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: "InterVariable", "Inter", sans-serif;
+  background: var(--bg-app);
+  color: var(--text-body);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* === TYPOGRAPHY SCALE — use these classes everywhere === */
+.display {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--text-primary);
+}
+.h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+.h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+.h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+.h4 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+.body-lg {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+.body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+.caption {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.mono {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+}
+.mono-sm {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+}
+
+/* === SKELETON SHIMMER === */
+@keyframes shimmer {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--r-sm);
+}
+
+/* === CARD BASE === */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow var(--t-base),
+    transform var(--t-base);
+}
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+.card-interactive:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+/* === PILL TAB BAR (floating, centered) === */
+.tab-bar {
+  display: inline-flex;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  padding: 4px;
+  gap: 2px;
+  box-shadow: var(--shadow-sm);
+}
+.tab-item {
+  padding: 7px 18px;
+  border-radius: var(--r-full);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--t-fast);
+  position: relative;
+  white-space: nowrap;
+}
+.tab-item.active {
+  background: var(--brand);
+  color: white;
+}
+.tab-item:not(.active):hover {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+/* === CROWD RING PULSE === */
+@keyframes crowd-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.crowd-pulse {
+  position: relative;
+}
+.crowd-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: crowd-pulse 2s ease-out infinite;
+}
+
+/* === MARQUEE TICKER === */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+
+/* === HEARTBEAT SVG LINE === */
+@keyframes heartbeat-scroll {
+  from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* === SCROLLBAR STYLING === */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--r-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* === LEAFLET MAP CUSTOM MARKERS === */
+.campus-marker {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+.marker-inner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 2.5px solid var(--crowd-low);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s var(--t-spring);
+}
+.campus-marker:hover .marker-inner {
+  transform: scale(1.15);
+}
+.campus-marker.selected .marker-inner {
+  background: var(--brand);
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+}
+.campus-marker.selected .marker-inner svg {
+  color: white !important;
+}
+.campus-marker[data-crowd="medium"] .marker-inner {
+  border-color: var(--crowd-medium);
+}
+.campus-marker[data-crowd="high"] .marker-inner {
+  border-color: var(--crowd-high);
+}
+
+.marker-crowd-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--crowd-high);
+  opacity: 0;
+  pointer-events: none;
+}
+.campus-marker[data-crowd="high"] .marker-crowd-ring {
+  opacity: 1;
+  animation: crowd-pulse 2s ease-out infinite;
+}
+.campus-marker[data-crowd="medium"] .marker-crowd-ring {
+  opacity: 0.4;
+}
+
+.marker-label {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 2px 7px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: var(--shadow-xs);
+  color: var(--text-primary);
+  pointer-events: none;
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  background: #f5f3ee;
+}
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+/* === DOTTED TICKET PATTERN === */
+.ticket-dots {
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-color: var(--bg-card);
+}
+
+/* === UTILITY CLASSES === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.truncate-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
